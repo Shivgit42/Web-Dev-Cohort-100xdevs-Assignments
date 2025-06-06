@@ -71,13 +71,16 @@ function addTaskListeners(task) {
     const desc = task.querySelector(".task-desc").innerText;
     const priority = task.querySelector(".priority").innerText.toLowerCase();
 
-    const parent = task.parentElement;
+    const container = task.closest(".column");
+    const form = container.querySelector(".form");
+
     task.remove();
 
-    const form = parent.parentElement.querySelector(".form");
     form.querySelector("input:nth-child(1)").value = title;
     form.querySelector("input:nth-child(2)").value = desc;
     form.querySelector("select").value = priority;
+
+    form.classList.remove("hidden");
   });
 }
 

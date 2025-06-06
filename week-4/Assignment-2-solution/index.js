@@ -1,3 +1,5 @@
+//? This is a file based todo app using cli
+
 const fs = require("fs");
 const { Command } = require("commander");
 const path = require("path");
