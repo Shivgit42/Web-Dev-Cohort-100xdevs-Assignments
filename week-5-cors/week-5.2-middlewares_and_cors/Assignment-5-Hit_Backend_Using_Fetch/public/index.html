@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cors testing</title>
+  </head>
+  <body>
+    <h1>Sum calculator</h1>
+    <input type="text" id="a" placeholder="Enter first Number" required />
+    <input type="text" id="b" placeholder="Enter second Number" required />
+    <button onclick="calculateSum()">Calculate sum</button>
+
+    <script>
+      async function calculateSum() {
+        const a = document.getElementById("a").value;
+        const b = document.getElementById("b").value;
+
+        const response = await fetch("http://localhost:3000/sum", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ a, b }),
+        });
+        const data = await response.json();
+        console.log(data);
+      }
+    </script>
+  </body>
+</html>
